@@ -1,0 +1,14 @@
+PODS:
+  - GPN (0.1.0)
+
+DEPENDENCIES:
+  - GPN (from `../`)
+
+EXTERNAL SOURCES:
+  GPN:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GPN: 6e28f5e8c5a5f76826c6facc733c923a27d050bd
+
+COCOAPODS: 0.36.4
