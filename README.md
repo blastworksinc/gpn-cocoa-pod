@@ -22,8 +22,8 @@ pod "GPN"
 
 ## Author
 
-Alex Lementuev, a.lementuev@gmail.com
+GameHouse, gpn-support@realnetworks.com
 
 ## License
 
-GPN is available under the MIT license. See the LICENSE file for more info.
+GPN is available under the Apache License, Version 2.0. See the LICENSE file for more info.
