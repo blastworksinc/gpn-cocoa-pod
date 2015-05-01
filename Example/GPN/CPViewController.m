@@ -26,4 +26,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)onRequest:(id)sender
+{
+}
+
+- (IBAction)onPresent:(id)sender
+{
+}
+
 @end
