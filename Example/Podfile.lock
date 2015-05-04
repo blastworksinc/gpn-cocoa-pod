@@ -1,5 +1,10 @@
 PODS:
-  - GPN (3.0.0)
+  - GPN (3.0.0):
+    - GPN/arc (= 3.0.0)
+    - GPN/no-arc (= 3.0.0)
+  - GPN/arc (3.0.0):
+    - GPN/no-arc
+  - GPN/no-arc (3.0.0)
 
 DEPENDENCIES:
   - GPN (from `../`)
@@ -9,6 +14,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  GPN: b0d3245ca7cdec29651c95a5d7a7fff73bc3362d
+  GPN: d8b1da2d8a45009cd416c35b850abf4fc0c3877d
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.0

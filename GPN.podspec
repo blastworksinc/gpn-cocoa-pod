@@ -21,10 +21,20 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/ghpartners'
 
   s.platform     = :ios, '5.0'
-  s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.subspec 'no-arc' do |ss1|
+    ss1.source_files = 'Pod/Classes/External/GoogleToolboxforMac/**/*.{h,m,mm}'
+    ss1.requires_arc = false
+    ss1.compiler_flags = '-fno-objc-arc'
+  end
+
+  s.subspec 'arc' do |ss2|
+    ss2.source_files = 'Pod/Classes/*.{h,m}', 'Pod/Classes/Implementation/**/*.{h,m,mm}', 'Pod/Classes/RemoteMonitor/**/*.{h,m,mm}'
+    ss2.dependency "GPN/no-arc"
+    ss2.requires_arc = true
+  end
+
+  s.public_header_files = 'Pod/Classes/*.h'
   s.frameworks = 'UIKit', 'Foundation', 'CoreGraphics', 'SystemConfiguration', 'CFNetwork', 'Security', 'CoreTelephony'
   s.weak_frameworks = 'StoreKit', 'AdSupport'
 end

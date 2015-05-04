@@ -8,10 +8,15 @@
 
 #import "CPAppDelegate.h"
 
+#import <CrossPromotion.h>
+
 @implementation CPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Initialize Cross Promotion singleton with app id
+    [CrossPromotion initializeWithAppId:@"0"];
+    
     // Override point for customization after application launch.
     return YES;
 }
