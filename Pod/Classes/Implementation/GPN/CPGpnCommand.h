@@ -41,7 +41,7 @@ typedef void (^CPGpnCommandCallback)(CPGpnCommand *command, NSError *error);
 @property (nonatomic, weak) CPGpnView          * view;
 @property (nonatomic, copy)   NSString         * commandId;
 @property (nonatomic, strong) NSDictionary     * parameters;
-@property (nonatomic, readonly) NSString * type;
+@property (nonatomic, readonly) NSString       * type;
 @property (nonatomic, assign) BOOL cancelled;
 
 @end

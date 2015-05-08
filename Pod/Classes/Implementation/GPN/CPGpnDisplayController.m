@@ -29,8 +29,8 @@
 @interface CPGpnDisplayController ()
 {
     UIView * _contentView;
-    BOOL _statusBarShouldBeHidden;
-    BOOL _forcedClose;
+    BOOL     _statusBarShouldBeHidden;
+    BOOL     _forcedClose;
 }
 
 @property (nonatomic, readwrite, strong) UIView * contentView;
