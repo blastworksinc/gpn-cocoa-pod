@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://partners.gamehouse.com/app-promotion-and-app-monetization/"
   s.license          = 'Apache License, Version 2.0'
   s.author           = { "GameHouse" => "gpn-support@realnetworks.com" }
-  s.source           = { :git => "https://github.com/gamehouse/gpn-ios-sdk-internal.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/gamehouse/gpn-cocoa-pod.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/ghpartners'
 
   s.platform     = :ios, '5.0'
