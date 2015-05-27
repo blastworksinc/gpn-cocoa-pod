@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "GPN"
-  s.version          = "3.0.0"
+  s.version          = "3.0.1"
   s.summary          = "GameHouse Promotion Network SDK."
   s.description      = <<-DESC
                        The GameHouse Promotion Network lets you drive app installs with intelligence and control. You can participate in GPN by integrating this open source SDK into your iOS apps. Also available for Android.

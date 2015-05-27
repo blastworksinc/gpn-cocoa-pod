@@ -313,7 +313,6 @@ static BOOL shouldLog(CPLogLevel level, CPLogTag tag)
 static void logMessage(NSString *message)
 {
     NSLog(@"%@", message);
-    CPDebugLog(message);
 }
 
 static void sendRemoteLog(CPLogLevel level, NSString *thread, NSString *message)

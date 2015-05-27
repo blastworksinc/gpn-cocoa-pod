@@ -37,7 +37,13 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshorten-64-to-32"
 
-static NSString* const INVALID_ADVERTISER_IDENTIFIER = @"00000000-0000-0000-0000-000000000000";
+static NSString * const kCPInvalidAdvertiserIdentifier = @"00000000-0000-0000-0000-000000000000";
+
+static NSString * const kCPInvalidFacebookUserId = @"0";
+
+static NSString * const kFacebookUserIdKey = @"com.gamehouse.gpn.facebookid";
+
+static NSString *facebookUserId = nil;
 
 #pragma mark -
 #pragma mark Unique Identifier
@@ -102,7 +108,7 @@ NSString * CPCreateUniqueAdvertisingIdentifier()
     if (CP_CLASS_AVAILABLE(ASIdentifierManager))
     {
         NSString *advertisingIdentifier = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
-        if ([advertisingIdentifier isEqualToString:INVALID_ADVERTISER_IDENTIFIER])
+        if ([advertisingIdentifier isEqualToString:kCPInvalidAdvertiserIdentifier])
         {
             return nil;
         }
@@ -126,6 +132,65 @@ CPAdvertisingTrackingState CPGetUniqueAdvertisingIdentifierTrackerState()
     
 #endif
     return CPAdvertisingTrackingStateUnknown;
+}
+
+static NSString *CPLoadFacebookUserId()
+{
+    id value = [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookUserIdKey];
+    return [value isKindOfClass:[NSString class]] ? value : nil;
+}
+
+static void CPSaveFacebookUserId(NSString *userId)
+{
+    if (userId)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:userId forKey:kFacebookUserIdKey];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kFacebookUserIdKey];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+NSString *CPGetFacebookAppUserId()
+{
+    if (facebookUserId == nil)
+    {
+        if ((facebookUserId = CPLoadFacebookUserId()) != nil)
+        {
+            CPLogDebug(CPTagCommon, @"Read Facebook user id: %@", facebookUserId);
+            return facebookUserId;
+        }
+        
+        CPLogDebug(CPTagCommon, @"Requesting Facebook user id...");
+        
+        [CPFacebookAppUserID requestWithCompletionHandler:^(NSString *userId, NSError *error) {
+            if (error)
+            {
+                facebookUserId = kCPInvalidFacebookUserId;
+                CPLogError(CPTagCommon, @"Can't request Facebook user id: %@", [error localizedDescription]);
+            }
+            else if (userId.length == 0)
+            {
+                facebookUserId = kCPInvalidFacebookUserId;
+                CPLogError(CPTagCommon, @"Can't request Facebook user id");
+            }
+            else
+            {
+                CPLogDebug(CPTagCommon, @"Received Facebook user id: @@", userId);
+                facebookUserId = userId;
+                CPSaveFacebookUserId(userId);
+            }
+        }];
+    }
+    
+    if ([facebookUserId isEqualToString:kCPInvalidFacebookUserId])
+    {
+        return nil;
+    }
+    
+    return facebookUserId;
 }
 
 #pragma mark -

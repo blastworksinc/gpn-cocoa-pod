@@ -55,3 +55,5 @@
 #import "CPHttpRequest.h"
 #import "CPHttpRequestError.h"
 #import "CPHttpRequestManager.h"
+
+#import "CPFacebookAppUserID.h"

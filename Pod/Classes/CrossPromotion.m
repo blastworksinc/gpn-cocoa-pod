@@ -202,7 +202,6 @@ static void CPDebugSetCatchUnhandledExceptions(BOOL flag);
     
     self.interstitialAdView = [self createInterstitialAdView];
 
-    CPDebugSetRequestStatus(@"Requesting interstitial ad...");
     CPLogDebug(CPTagCommon, @"Requesting interstitial ad...");
     
     NSDictionary *params = [delegate respondsToSelector:@selector(interstitialAdParams)] ? [delegate interstitialAdParams] : nil;
@@ -460,6 +459,12 @@ static void CPDebugSetCatchUnhandledExceptions(BOOL flag);
                             // a shared instance
     
     CPLogInfo(CPTagCommon, @"Initialized with app id: %@ SDK ver. %@", appId, kCPSDKVersion);
+    
+    [CPFacebookAppUserID requestWithCompletionHandler:^(NSString *userId, NSError *error) {
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }];
 }
 
 + (void)destroy

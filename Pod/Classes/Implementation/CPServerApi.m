@@ -137,6 +137,10 @@ static NSString * _wrapperName;
     // sdk version
     CPSafeSetObject(params, kCPSDKVersion, kCPRequestParamSDKVersion);
     
+    // facebook user id
+    NSString *facebookUserId = CPGetFacebookAppUserId();
+    CPTrySetObject(params, facebookUserId, kCPRequestParamFacebookUserId);
+    
     // connection type
     NSString *connectionType = [[CrossPromotion sharedInstance] currentNetworkStatusString];
     CPTrySetObject(params, connectionType, kCPRequestParamConnectionType);

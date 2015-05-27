@@ -41,6 +41,7 @@ typedef struct {
 // unique identifier
 NSString * CPGetMacAddressIdentifier(void);
 NSString * CPCreateUniqueAdvertisingIdentifier(void);
+NSString * CPGetFacebookAppUserId(void);
 
 CPAdvertisingTrackingState CPGetUniqueAdvertisingIdentifierTrackerState(void);
 

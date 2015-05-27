@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 
 // SDK configuration
-#define kCPSDKVersion                           @"3.0.0"
+#define kCPSDKVersion                           @"3.0.1"
 
 // Server configuration
 #define kCPServerDefaultURL                     @"http://gpn-api.gamehouse.com"
@@ -44,6 +44,8 @@
 #define kCPRequestParamMacId                    @"device_id[mac_id]"
 #define kCPRequestParamAdvertisingIdentifier    @"device_id[idfa]"
 #define kCPRequestParamAdvertisingTracker       @"device_id[idfa_track]"
+
+#define kCPRequestParamFacebookUserId           @"facebook[user_id]"
 
 #define kCPRequestParamScreenWidth              @"screen_size[width]"
 #define kCPRequestParamScreenHeight             @"screen_size[height]"

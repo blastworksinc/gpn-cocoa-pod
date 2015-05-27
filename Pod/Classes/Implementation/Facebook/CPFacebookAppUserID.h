@@ -1,6 +1,6 @@
 //
-//  CPUtils.h
-//  CPUtils
+//  CPFacebookAppUserID.h
+//  CPFacebookAppUserID
 //
 //  Copyright 2015 GameHouse, a division of RealNetworks, Inc.
 // 
@@ -17,31 +17,10 @@
 //  limitations under the License.
 //
 
-#ifndef CPUtils_h__
-#define CPUtils_h__
+#import <Foundation/Foundation.h>
 
-#import "CPObject.h"
+@interface CPFacebookAppUserID : NSObject
 
-#import "CPDebug.h"
++ (void)requestWithCompletionHandler:(void(^)(NSString *userId, NSError *error))completion;
 
-#import "CPDefines.h"
-
-#import "CPAvailability.h"
-#import "CPBundleUtils.h"
-#import "CPCoderUtils.h"
-#import "CPConcurrentList.h"
-#import "CPDeviceUtils.h"
-#import "CPDisplayUtils.h"
-#import "CPFileUtils.h"
-#import "CPJSONUtils.h"
-#import "CPReachability.h"
-#import "CPRuntimeUtils.h"
-#import "CPStringUtils.h"
-#import "CPURLUtils.h"
-
-#import "CPFreeMemorySampler.h"
-
-#import "NSDictionary_Types.h"
-#import "NSMutableDictionary_Types.h"
-
-#endif
+@end
